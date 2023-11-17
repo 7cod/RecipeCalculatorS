@@ -1,0 +1,237 @@
+What is the repository pattern?:
+	Use a repository to separate the logic that retrieves the data and maps it to the entity model from the business logic that acts on the model.
+	--Use un repositorio para separar la lógica que recupera los datos y lo asigna al modelo de entidad de la lógica de negocio que actúa sobre el modelo.
+
+	The Repository pattern is used for abstracting how data is persisted or retrieved from a database. 
+	The idea behind the Repository pattern is to decouple the data access layer from the business access layer of the application 
+	so that the operations (such as adding, updating, deleting, and selecting items from the collection) 
+	is done through straightforward methods without dealing with database concerns such as connections, commands, and so forth.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+What are the Benefits of the Repository Pattern in C#?
+	It allows (us) programmers to integrate all of the fundamental data operations related to an entity in one main class. 
+	Without this pattern, developers (we) would need to create multiple classes for each entity with the same logic.
+
+	*Reusability
+	*Testablity
+	*Separation of concerns
+	*Decoupled code
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+What is Unit of Work?
+	is referred to as a single transaction that involves multiple operations of insert/update/delete and so on kinds
+	que se conoce como una única transacción que involucra múltiples operaciones de insertar / actualizar / borrar y demás tipos
+	A unit of work is responsible for keeping tracj of the list of changes dutig a transaction and committing it.
+
+VALUE OBJECT
+	is a small object that represents a simple entity whose equality is not based on identity
+	--es un pequeño objeto que representa una entidad sencilla cuya igualdad no se basa en la identidad
+
+DECORATOR
+	is used to add new functionality to an existing object without changing its structure.
+	---se utiliza para añadir nueva funcionalidad a un objeto existente sin cambiar su estructura.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+What is Dependency Injection (DI)?:
+	It is used to reduce the tight coupling between the software components.
+
+	Tight coupling is when classes and objects are dependent on each other. When a class is dependent on another concreate class.
+
+	Loosly coupling is when 2 objects are independent on each other. Allows manage future changes easily.
+
+	Dependency injection is a set of software design pprinciples and  patterns that enables us to develop loosly couple code. 
+
+	Is a technique whereby one object (or static method) supplies the dependencies of another object. 
+	A dependency is an object that can be used (a service). 
+	An injection is the passing of a dependency to a dependent object (a client) that would use it.
+ 	The service is made part of the client's state.
+ 	Passing the service to the client, rather than allowing a client to build or find the service, is the fundamental requirement of the pattern.
+	es una tecnica por la cual un objeto o metodo estatico suministra las dependencias de otro objeto.
+
+	singlenton
+	addscopped
+		When we register a type as Scoped, one instance is available throughout the application per request. When a new request comes in, 
+		the new instance is created. 
+		Add scoped specifies that a single object is available per request.
+	addtransient
+		When we register a type as Transient, every time a new instance is created. 
+		Transient creates new instance for every service/ controller as well as for every request and every user.
+
+		public void ConfigureServices(IServiceCollection services){
+   			services.AddTransient<ILog,Logger>()
+		}
+
+ 	Use `AddTransient` when you need a new instance of a service for every request or operation.
+
+	- Use `AddScoped` when you want to maintain state within the scope of an HTTP request or a defined context.
+
+	Use `AddSingleton` when you want to share a single instance of a service throughout the entire application.
+
+	By choosing the appropriate lifetime for your services, you can ensure optimal performance and behavior in your application.
+
+	Dependency injection is a key tool that helps you adhere to the SOLID principles.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+SOLID PRINCIPLES
+
+The Single Responsibility Principle (SRP): 
+	The idea behind the SRP is that every class, module, or function in a program should have one 
+	responsibility/purpose in a program. 
+	As a commonly used definition, "every class should have only one reason to change".
+	
+	For example if we are creating a method to get the information of the clients, then the only task
+	for this method should be to get the list of clients, and not to do additional or extra responsibilities.
+	I mean that method should not contain lets say a task to write a log of the user who is getting the clients data or anything else.
+
+	--------------------------------------
+
+Open–Closed Principle (OCP): 
+	The open-closed principle states that software entities should be open for extension, but closed for modification.
+	This implies that such entities – classes, functions, and so on – should be created in a way that their core functionalities can be extended 
+	to other entities without altering the initial entity's source code.
+
+	For example lets say that we have a Car class with some methods accelerateAudi(), AccelerateBMW(), AcceleratePorche().
+	one method for each model of car, but if we introduce a new car model to our system, we would have to modify the car classs itself,
+	this means that when extending our system we performed an undesired modification.
+	So to follow this principle we should use inheritance to extend the functionality of an existing class.
+	We can create an interface ICar with the Accelerate method, then implement this interface  in the Audi class. so if new cars are added to the system
+	all we have to do is implement the interface ICar, and now we are not changing the core functionality, it was extended instead.
+
+	Other example, maybe we have a savingAccount class with a CalculateInterest() method that calculates the interest based on the account type,
+	lets say we have the account types "Regular" and "Salary" for the momment, but maybe tomorrow we get the new bussiness account type.
+	so again we would need to modify the CalculateInterest() method to handle the new account type. To solve this issue and apply the open-closed
+	principle we can create an interface ISavingAccount with the CalculateInterest() method. After that, create a class for RegularSavingAccount and then 
+	inherit it from ISavingAccount class. Now we can implement the CalculateInterest method inside it.
+	Similarly create a separate class for BussinessSavingAccount to extend the SavingAccount functionality which will be the extension and not a modification.
+	
+	--------------------------------------
+
+Liskov Substitution Principle (LSP): 
+	Implies that when an instance of a class is passed/extended to another class, the inheriting class should have a use 
+	case for all the properties and behavior of the inherited class.
+	Let's say we have a class called Amphibian for animals that can live on both land and water. 
+	This class has two methods to show the features of an amphibian – swim() and walk().
+
+
+	--------------------------------------
+
+Interface Segregation Principle (ISP)
+	Segregation means keeping things separated, and the Interface Segregation Principle is about separating the interfaces.
+
+	so the interfaces of a program should be split in a way that the user/client would only have access to the necessary methods related to their needs.
+	Clients should not be forced to depend on methods that they do not use.
+
+	An object should only depend on interfaces it requires and should not be enforced to implement any method (or property) it doesn’t require.
+
+	This principle states that clients should not be forced to depend on interfaces they do not use. 
+
+	If we violate this principle, we may have interfaces that are too large and contain methods that are not relevant to some clients, 
+	which can lead to code that is difficult to understand and maintain. 
+	This can also result in code that is not reusable, and that can cause unnecessary coupling between modules.
+
+	For example lets say we have an ILead interface with the methods createSubTask, AssignTask and WorkOnTask,
+	and we have the role TeamLeader wich is a Class that implements this ILead interface. 
+	
+	But later a new role is added to the system, lets say the role Manager,	who assigns tasks to the TeamLeader but will not work on the task.
+	so the new role for manager, i mean in the class Manager we can not implement the ILead interface because the WorkOnTask method is not relevant for the manager.
+	Here we would be forcing the Manager class to implement a WorkOnTask() method without a purpose.
+
+	To fix it We need to divide the responsibilities by segregating the ILead interface for the programmer that can only work on tasks
+	—an interface that provides a contract for WorkOnTask().
+	So we can have an interface IProgrammer with the WorkOnTask() method.
+	Another interface for the ILead with the AssignTask and CreateSubTask methods, with this design, the manager class can implement the ILead class
+	this time containing the relevant methods for it.
+	The Programmer can implement the IProgrammer interface and the team leader can now implement both the ILead and the IProgrammer interfaces
+	
+
+	public Interface ILead {   void CreateSubTask();   void AssginTask();   void WorkOnTask(); }
+
+	public class TeamLead : ILead { public void AssignTask()  public void CreateSubTask()   public void WorkOnTask()   }
+
+	--------------------------------------
+
+Dependency Inversion Principle (DIP): 
+	High-level modules should not import anything from low-level modules. 
+	Both should depend on abstractions (e.g., interfaces).
+	And, Abstractions should not depend on details. 
+	Details (concrete implementations) should depend on abstractions.
+
+	A. Higher-level modules should not depend on low-level modules. Both should depend on abstractions.
+	B. Abstractions should not depend on details. Details should depend on abstractions.
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+que es la arquitectura clean. trabaja con puras interfaces e injecciones, para ocultar la implementacion de la logica, como se oculta pss con interfaces.
+Clean Architecture: emphasizes a clear separation of concerns. 
+	It ensures that different aspects of your application, such as business logic, presentation, and data access, are kept separate, 
+	making it easier to manage and maintain the system.
+
+Clean Architecture is a flexible concept that can be adapted to different programming languages and technologies. 
+It provides a set of guidelines to structure your applications for maintainability, testability, and adaptability, while keeping the core business logic at the center of your design.
+
+
+Layers:
+Clean Architecture organizes an application into concentric layers:
+
+Entities: Represent the core business objects and contain the business rules.
+Use Cases: Define application-specific business logic, often corresponding to user interactions.
+Interface Adapters: Handle input and output, mapping between the inner and outer layers.
+Frameworks and Drivers: Deal with external technologies and frameworks, such as databases, web frameworks, and UI components.
+Dependency Rule: The Dependency Rule states that dependencies should always point inward toward the core business logic. 
+	Inner layers should have no knowledge of the outer layers. This ensures that the core business logic remains independent of specific technologies.
+
+Inversion of Control (IoC):
+	Clean Architecture encourages the use of IoC containers and dependency injection to manage dependencies and decouple components. This promotes testability and flexibility.
+
+Entities:
+	Entities represent the core business objects. They should be simple and contain only business rules, with no concern for persistence or presentation.
+
+Use Cases:
+	Use cases contain application-specific business logic. They represent high-level interactions between entities and encapsulate the steps involved in various application processes.
+
+Interface Adapters:
+	Interface Adapters act as the bridge between the core business logic and external technologies. 
+	They handle input and output and are responsible for translating data formats, such as mapping domain models to database entities.
+
+Frameworks and Drivers:
+	Frameworks and Drivers are the outermost layer that communicates with external systems and frameworks. This layer interacts with web frameworks, databases, and user interfaces.
+
+Testability:
+	Clean Architecture places a strong emphasis on testability. By isolating the core business logic from external dependencies, 
+	it becomes easier to write unit tests, integration tests, and end-to-end tests.
+
+Adaptability to Change:
+	The architecture allows for easier modification and adaptation to changing requirements or technology choices without affecting the core business rules.
+
+User Interfaces:
+	Clean Architecture accommodates various user interfaces, including web, mobile, or desktop, by providing flexibility in the outer layers.
+
+Persistence Mechanisms:
+	The architecture allows for different persistence mechanisms, such as databases or external services, without altering the core business logic.
+
+Application Services:
+	Application services, located in the Use Cases layer, provide a high-level API to the application, defining the use of use cases and coordinating interactions between entities.
+
+SOLID Principles:
+Knowledge of SOLID principles (Single Responsibility, Open-Closed, Liskov Substitution, Interface Segregation, and Dependency Inversion) is helpful as Clean Architecture aligns with these principles.
+
+Decoupling:
+Understanding the importance of reducing coupling between components and layers within the application is essential to implement Clean Architecture effectively.
+
+Dependency Injection (DI):
+Familiarity with DI principles and DI containers (e.g., Microsoft DI, Autofac, Unity) is crucial for managing dependencies and promoting modularity.
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+domain driven design
+what is buunded countext
+
+ubiquitous language
+https://app.pluralsight.com/guides/solid-design-microservices
+

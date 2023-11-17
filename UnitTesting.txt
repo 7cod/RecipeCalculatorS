@@ -1,0 +1,56 @@
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+unit testing	= arrenge act assert
+
+Arrange-Act-Assert (AAA):
+The AAA pattern is commonly used in unit tests:
+
+Arrange: Set up the test by creating objects and preparing the system under test.:
+	In the "Arrange" section, you set up the necessary context for the test. This includes creating instances of the test subject (sut) 
+	and any required data objects (qList, filterData, range).
+
+Act: Perform the action you want to test:
+	In the "Act" section, you call the method you want to test (sut.CalculateCompensationByTotalReportsAsync) 
+	with the provided input (filterData and 	range).
+Assert: Verify that the action produced the expected result
+	In the "Assert" section, you check the expected outcomes against the actual results using Assert.Equal. 
+	
+Assert.Equal(expected, actual):Asserts that two objects are equal using their Equals method.
+Assert.NotEqual(expected, actual):Asserts that two objects are not equal.
+Assert.Same(expected, actual):Asserts that two objects reference the same instance.
+Assert.NotSame(expected, actual):Asserts that two objects do not reference the same instance.
+Assert.True(condition):Asserts that the given condition is true.
+Assert.False(condition):Asserts that the given condition is false.
+Assert.Null(obj):Asserts that the object is null.
+Assert.NotNull(obj):Asserts that the object is not null.
+Assert.IsType(expectedType, actualObject):Asserts that the actual object is an instance of the expected type.
+Assert.IsNotType(unexpectedType, actualObject):Asserts that the actual object is not an instance of the unexpected type.
+Assert.IsAssignableFrom(expectedType, actualObject):Asserts that the actual object is assignable to the expected type.
+Assert.Throws<TException>(action):Asserts that executing the provided action results in an exception of the specified type.
+
+Collection Assertions:
+
+xUnit also provides assertions for working with collections and arrays:
+
+Assert.Contains(expectedItem, collection):Asserts that the collection contains the expected item.
+Assert.DoesNotContain(unexpectedItem, collection):Asserts that the collection does not contain the unexpected item.
+Assert.Empty(collection):Asserts that the collection is empty.
+Assert.NotEmpty(collection):Asserts that the collection is not empty.
+Assert.Equal(expectedCollection, actualCollection):Asserts that two collections are equal in terms of their elements and order.
+Assert.NotEqual(unexpectedCollection, actualCollection):Asserts that two collections are not equal.
+
+Matchers:xUnit also supports custom matchers for more expressive assertions. Matchers can be used in combination with the Assert.Matches method:
+
+Assert.Matches<T>(expectedMatcher, actual):Asserts that the actual object matches the expected matcher.
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+The last unit testing i was working on is about a function that retreives jobcodes and jobtitles from the database, 
+so if the jobcode is null or empty the function will only return the jobtitle,
+if the jobcode contains something the the function will return the jobtitle plus a dash plus the jobcode, 
+its a simple concatenation, so for the unit testing i created a Theory unit testing with some inlinedata the inlinedata are the parameters 
+for example the jobtitle, the jobcode and the expected result.
+
+i follow the aaa pattern,
+create the needed mocking objects
+then i call the function and finally assert the actual response vs the expected result.

@@ -1,0 +1,152 @@
+what is REST: architectural style for providing standards between computer systems on the web, 
+making it easiser for systems, often called RESTful systems to comunicate to each other.
+
+separation of client and server
+statelessness
+
+Polymorphism can be at compile time and at run time.
+Overloading is a type of compile time and Overriding is a type of run time polymorphisim.
+
+Overloading: multiple methods of the same name in the same class.
+Overriding is having methods with same name and signature but in diferent classes. in the base class you use the virtual
+keyword and in the derived class you have to use the override on the method that you want to override.
+
+method hiding , you can hide the implementation of the methods of a base class from the derived class using the new keyword.
+
+Abtract					Interface
+can contain methods, fields		an contain undefined methos only, nothing else.
+contants, contructor.
+Does not support multiple inheritance	Support multiple inheritance
+
+Abstract class is a good choice when you are sure some methods are concrete/defined and must be implemented in the same way in all derived classes.
+
+Interface is a good choice when you know a method has to be there, but it can be iplemented differently by independent derived classes.
+
+what are filters in web api:
+Filters are used to inject extra logic at the different levels of webapi framework request
+processing.Filters provide a way for cross-cutting concerns(loggin, authorization, and caching)
+Filters can be applied to an action or controller level.
+
+Authentication Filter: helps us to authenticate the user detail. In the authentication filter,
+we write the logic for checking user authenticity.
+
+Authorization Filters: are responsible for checkng user access. They implement the iauthorization
+Filter interface in the framework.
+
+Action Filter: An exception filter is executed when a controller method trows any unhandled 
+exception that is not an HttpResponseException. the HttpResponseException type is a special
+case, because it is designed specifically for returning an HTTP response.
+
+Using Exception Filters:
+They can be used to handle unhandled exception wich are generated in Web API. Note that the exception filter 
+does not catch HttpResponseException because HttpResponseException is specifically designed to return Http response. 
+This is an attribute so we can decorate both action method controller with this. 
+ExceptionFilter is very similar to HandleErrorAttribute in MVC.
+
+*Implement ExceptionFilterAttribute in your custom exception class
+*Override OnException() method.
+
+Stored Procedure: Is a group of one or more transact sql statements. Are a collection of
+transact-sql statements stored within the db. They are used to encapsulate used queries,
+such as conditional statements, loosp and other powerfull programming features.
+They are similar to functions in high level programming languages, they support 
+both input and output parameters, as well as a return value. Sps can return rows of 
+data or single values.
+
+Some benefits of Sps 
+* Reduce server/client network traffic *strong security *Reuse of code *Easier Maintenance.
+
+Functions: Are usefull objects in sql server, is a code snippet that can be executed on a sql
+server. Is considered an object. Only works with select statements. They compile every
+time. Must return a value or result. Only works with input parameters. try and catch is not allowed
+in functions.
+
+
+The Single Responsibility Principle (SRP):The idea behind the SRP is that every class, module, or function in a program should have one 
+responsibility/purpose in a program. As a commonly used definition, "every class should have only one reason to change".
+
+Open–Closed Principle (OCP): The open-closed principle states that software entities should be open for extension, but closed for modification.
+This implies that such entities – classes, functions, and so on – should be created in a way that their core functionalities can be extended to other 
+entities without altering the initial entity's source code.
+
+Liskov Substitution Principle (LSP): Implies that when an instance of a class is passed/extended to another class, the inheriting class should have a use 
+case for all the properties and behavior of the inherited class.
+Let's say we have a class called Amphibian for animals that can live on both land and water. T
+his class has two methods to show the features of an amphibian – swim() and walk().
+
+Interface Segregation Principle (ISP)
+The interface segregation principle states that the interface of a program should be split in a way that the user/client would only 
+have access to the necessary methods related to their needs.
+
+Dependency Inversion Principle (DIP): High-level modules should not import anything from low-level modules. Both should depend on abstractions 
+(e.g., interfaces).And, Abstractions should not depend on details. Details (concrete implementations) should depend on abstractions.
+
+Routing it allows us to build modern single page apps that can be loaded once by the browser and provide multiple view that the user can
+navigate between them using the browsers adress bar and navigation buttons or hyperlinks in the app interface.
+is the process of driving the ui of an app using urls. the key in routing is not to reload the web app. RouterLink.
+Routing is organizing the app into multiple view(screens) and navigate between them on user request.
+appRoutes: Routes [{path: 'user', component: userComponent}, {path: 'x', component: xComponent}]
+
+what is an Obserbable: are the constructs to wich you subscripe to be informed about the changes in data.
+Observables are the stream of data and whenever a new data piece is emmitted, our subscription will know about it.
+Angular observables are handled by Angular.
+Observables are a secuence of items that arrives asyncronously over time.
+Observable is nothing but the http response that arrives asynchronously.
+
+Observer is the handler for receiving the observable notifications implements the Observer interface.
+It is an object that defines callback methods to handle the three types of notifications that an observable can send.
+
+Notifications 		Type		Description
+next			Required, 	A handler for each delivered value. Called zero or more times after execution starts.
+error			Optional, 	A handler for an error notifications. An error halts execution of the observables instance.
+complete		Optional, 	Delayed values can continue to be delivered to the next handler after execution is complete.
+
+Observables						Promises
+Observables handle multiple values overtime.		Promises are only called once and will return a single value.
+Observables are cancellable.				Promises are not cancellable.
+Observables are lazy means till the time 		Promises are eager.
+you don’t subscribe an observable it will 
+not return anything.
+Support map, filter, reduce and similar operators.	
+Proposed feature for ES 2016.	
+Use Reative Extension (RxJS)	
+An array whose items arrive asynchronously overtime.	
+
+What are operators: Are functions that build on the observable foundation to enable sophisticated manipulation of collections.
+Operators take configuration options, and they return a function that takes a source observable. when executing this
+returned function, the operator observes the source observable's emitted values, transforms them and returns a new observable
+of the treansformed values.
+Are basically pure functions, that transforms information into observables. It always creates new observables, 
+often based on the current observable.
+ 
+What is @ViewChild in Angular? view child is used to query a single dom elelment from the dom tree and lets you manipulate it.
+
+ViewChildren is used to accessing multiple elements. The response of the element list will always be a query list.
+
+Both ViewChild and ViewChildren are used to communicate between the components to access the data.
+@ViewChild and @ViewChildren are the types of decorators used to access the child component class and its different properties 
+into the parent component. It's similar to the inheritance.
+
+Local Reference is a feature to get access to some elements in your templete and then use that either directly in the template or you can pass it
+on to the typescript code.
+
+*component *directive *module *services *databinding *dependency *injection template
+
+NgOnChanges
+Executed right after the start when new component is created, also always called whenever ne of our bound input props chages like @Input.
+
+NgOnInit: Called once the comp is initialized. it runds afer the constructor.
+NgDoCheck: Called during every change detection runs, on every change angular makes, for ex if you click some button.
+NgAfterContentInit: this is called whenever the content wich is projected via ngcontent has been initialized. calle after ng-content has been projected into view
+NgAfterContentChecked:Called every time the projected content has been cheked
+NgAfterViewinit: Called after the components view and child view has been initialized
+NgAfterviewChecked: Called every time the view and childview have been cheked.
+NgOnDestroy: Called on the comp is about to be destroyed, for ex, if you placed ng if and this gets set to false an therefore it removes from the dom.
+
+
+
+
+
+
+
+

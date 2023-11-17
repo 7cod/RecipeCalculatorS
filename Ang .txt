@@ -1,0 +1,275 @@
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Architecture overview of Angular:
+
+Component
+Directive
+Modules
+Services
+DataBinding
+Dependency Injection
+Template
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Lifecyclehooks:
+
+	NgOnChanges:
+		Executed right after the start when new component is created, also always called whenever one of our bound input props chages like @Input.
+
+	NgOnInit: 
+		Called once the comp is initialized. it runs afer the constructor.
+
+	NgDoCheck: 
+		Called during every change detection runs, on every change angular makes, for ex if you click some button.
+
+	NgAfterContentInit: 
+		this is called whenever the content wich is projected via ngcontent has been initialized. called after ng-content has been projected into view
+
+	NgAfterContentChecked:
+		Called every time the projected content has been cheked
+
+	NgAfterViewinit: 
+		Called after the components view and child view has been initialized
+
+	NgAfterviewChecked: 
+		Called every time the view and childview have been cheked.
+
+	NgOnDestroy: 
+		Called on the comp is about to be destroyed, for ex, if you placed ng if and this gets set to false an therefore it removes from the dom.
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+What is a Local Reference?
+	 is a very nice feature to get access to some elements in your template and then use that either directly in the template or you can pass it on to the typescript code.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+What is Routing in Angular?: It allows us to build modern single page apps that can be loaded once by the browser and provide multiple views that the user can
+	navigate between them using the browsers adress bar and navigation buttons or hyperlinks in the app interface.
+
+	Is the process of driving the ui of an app using urls. the key in routing is not to reload the web app. RouterLink.
+	Routing is organizing the app into multiple view(screens) and navigate between them on user request.
+	appRoutes: Routes [{path: 'user', component: userComponent}, {path: 'x', component: xComponent}]
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Diferences between Reacitive Forms and Template Driven Forms:
+
+	Template-driven forms make use of the "FormsModule", while reactive forms are based on "ReactiveFormsModule".
+	Template-driven forms are asynchronous in nature, whereas Reactive forms are mostly synchronous.
+	In a template-driven approach, most of the logic is driven from the template, whereas in reactive-driven approach, 
+	the logic resides mainly in the component or typescript code. Let us get started by generating a component and then we'll update our form code.
+	
+	Here are the differences between Template-Driven and Reactive Forms:
+
+	Template Driven Forms need the FormsModule, while Reactive forms need the ReactiveFormsModule
+	Template Driven Forms are based only on template directives, while Reactive forms are defined programmatically at the level of the component class
+	Reactive Forms are a better default choice for new applications, as they are more powerful and easier to use.
+	The Template Driven approach is very familiar to AngularJs developers and is ideal for easy migration of AngularJs applications into Angular.
+	The Reactive approach removes validation logic from the template, keeping the templates cleaner.
+	Reactive forms are easier to use in general and support better more advanced use cases via its Observable-based API.
+	It's not an exclusive choice but for a matter of consistency, it's better to choose one of the two approaches and use it everywhere in our application, preferably Reactive forms
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+what is an Obserbable?: are the constructs to wich you subscripe to be informed about the changes in data.
+	Observables are the stream of data and whenever a new data piece is emmitted, our subscription will know about it.
+	Angular observables are handled by Angular.
+	Observables are a secuence of items that arrives asyncronously over time.
+	Observable is nothing but the http response that arrives asynchronously.
+
+	Observer is the handler for receiving the observable notifications implements the Observer interface.
+	It is an object that defines callback methods to handle the three types of notifications that an observable can send.
+
+	Notifications 		Type		Description
+	next			Required, 	A handler for each delivered value. Called zero or more times after execution starts.
+	error			Optional, 	A handler for an error notifications. An error halts execution of the observables instance.
+	complete		Optional, 	Delayed values can continue to be delivered to the next handler after execution is complete.
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Difference between promisse and observable:
+
+	A key diference is that a promise always returns only one value, another thing is that observables are cancelable.
+	if you dont want your newsletter anymore, you unsubscribe.
+	with promises this is different, you can not cancel a promise.
+	If the promise is handed to you, the process that will produce that promises resolution is already underway, 
+	and you generraly dont have access to prevent that promises resolution from executing.
+
+	Observables						|	Promises
+	Observables handle multiple values overtime.		|	Promises are only called once and will return a single value.
+	Observables are cancellable.				|	Promises are not cancellable.
+	Observables are lazy means till the time 		|	Promises are eager.
+	you don’t subscribe an observable it will 		|
+	not return anything.					|
+	Support map, filter, reduce and similar operators.	|
+	Proposed feature for ES 2016.				|
+	Use Reative Extension (RxJS)				|
+	An array whose items arrive asynchronously overtime.	|
+	It starts if you subscribe to it			| 	Starts inmediately
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+What are interceptors?
+	It inspects/modifys the requests, the data that goes from your application to the server and also what comes from the server to your app.
+	They can modiify the requests(endpoints, services) and the Guards control the navigation routes between pages of your app allowing or denying access.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+What is @ViewChild in Angular? 
+	Is a decorator tha creates a view dom query.
+	Provides a way to access and manipulate the dom elements, directives and coomponents.
+	Property decorator that configures a view query. The change detector looks for the first element or the directive mathing the selector in the view dom. If the view dom
+	changes, and a new a new child mathes the selector, the property is updated.
+	View child gives us another way to access the local references ot to any element actually direclty from within our typescript code.
+	view child is used to query a single dom elelment from the dom tree and lets you manipulate it.
+
+	ViewChildren is used to accessing multiple elements. The response of the element list will always be a query list.
+
+	Both ViewChild and ViewChildren are used to communicate between the components to access the data.
+	@ViewChild and @ViewChildren are the types of decorators used to access the child component class and its different properties 
+	into the parent component. It's similar to the inheritance.
+
+	Local Reference is a feature to get access to some elements in your templete and then use that either directly in the template or you can pass it
+	on to the typescript code.
+
+	*component *directive *module *services *databinding *dependency *injection template
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+What are operators: 
+	Are functions that build on the observable foundation to enable sophisticated manipulation of collections.
+	Operators take configuration options, and they return a function that takes a source observable. when executing this
+	returned function, the operator observes the source observable's emitted values, transforms them and returns a new observable
+	of the treansformed values.
+
+	Are basically pure functions, that transforms information into observables. It always creates new observables, 
+	often based on the current observable.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+what is SwitchMap?
+	it receives values from the external observable and sends them by parameters to a function that returns a new observable.
+
+What is Map?
+	it allows us to receive an input value and return a different value than the one we received. if your intention is to return a new observable, 
+	with map is not posible, you need to use flatmap(merge map).
+
+FlatMap?
+	Basically what it does is transform an observable into other observable and join all under one stream.
+
+Take? It returns an observable an observable that emits onlythe first values emited by the source observable
+
+TakeUntil: Hay situaciones las que queremos cancelar las subscripciones a nuestros observables, una de las maneras de hacerlo es con una mezcla de takewhile y take untill
+		en general son para desubscribirse de un observable.
+	takewhile es desencadenado por la notificacion entrante mientras que take untill es desencadenado por el observable que recibe por los parametros
+	Utilizar take untill cuando queremos cancelar la subscripcion de un evento externo. Debe ser el utimo operador del observable.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+How can you test a component:
+
+Create a Spec File:
+	If you haven't already, create a spec file for your component by convention. The spec file should have the same name as your component's TypeScript file with a .spec.ts extension. 
+	For example, if your component is named my-component, the spec file should be named my-component.component.spec.ts.
+
+Configure TestBed:
+	Inside your spec file, you need to configure the Angular TestBed to create a testing module for your component. 
+	This is typically done in the beforeEach block. 
+	The testing module should include the component you're testing and any dependencies such as services, providers, or modules.
+
+Write Test Cases:
+	Inside the describe block, you can write individual test cases using the it function. 
+	In each test case, you should set up the initial state, perform an action (if needed), and make assertions about the expected behavior.
+
+Arrange, Act, Assert:
+	Follow the Arrange-Act-Assert pattern in your test cases:
+
+	Arrange: Set up the initial state and provide any required data or services.
+	Act: Invoke the method or trigger the event you want to test.
+	Assert: Use Jasmine's matchers like expect to make assertions about the expected behavior or outcome.
+	Detect Changes:
+	After acting on the component, call fixture.detectChanges() to trigger Angular's change detection. This updates the view based on changes in the component's state.
+
+Run Tests:
+	To run your tests, use a test runner like Karma or Jest, which is typically configured for Angular projects. 
+	The test runner executes your spec files and reports the results.
+
+View Test Results:
+	After running the tests, you can view the test results in the terminal or in your test runner's graphical interface. 
+	Failed tests will be highlighted, indicating which assertions failed.
+
+	By following these steps, you can create and run unit tests for your Angular components to verify that they behave 
+	as expected and to ensure that your application remains robust as you make changes and updates.
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Redux:
+
+NgRx solves a number of problems related to state management in Angular applications, including:
+
+Scalability: As Angular applications become larger and more complex, it can be difficult to manage state effectively using traditional methods such as services and components. 
+NgRx provides a scalable and structured approach to state management, making it easier to manage state in complex applications.
+Consistency: NgRx makes it easier to maintain a consistent state across your Angular application. This can help to improve the performance and reliability of your application.
+Predictability: NgRx makes it easier to reason about changes to state in your Angular application. This can help to prevent bugs and make your application more maintainable.
+Testability: NgRx makes it easier to test your Angular application. This is because NgRx uses immutable state and pure reducers, which makes it easier to predict the output of your application given a set of inputs.
+In addition to these general problems, NgRx can also help to solve specific problems related to state management in Angular applications, such as:
+
+Performance: NgRx can improve the performance of your Angular application by caching state and avoiding unnecessary re-renders.
+Debugging: NgRx DevTools is a browser extension that provides a number of tools for debugging and inspecting NgRx applications. This can help you to identify and fix bugs in your application more quickly.
+Collaboration: NgRx can make it easier for developers to collaborate on Angular applications by providing a single source of truth for state. This can help to reduce misunderstandings and conflicts between developers.
+Overall, NgRx is a powerful tool that can help you to improve the scalability, consistency, predictability, testability, performance, debugging, and collaboration of your Angular applications.
+explicar que es ngredux.
+
+registrar eventos en el store, subscribirte a ellos
+
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+convencion al crear componentes:
+	server.component.ts
+	warning-alert.component.ts
+
+
+
+attribute directives: ngStyle: <p [ngStyle]="{backgroundColor: getColor()}"> {{'Server'}} sith id {{serverId}} is {{getServerStatus()}} </p>
+		ngClass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,101 @@
+What is SQL Server?:
+	Is a relational database management system (RDBMS) from Microsoft that's designed for the enterprise environment.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+What are Tables?:
+	Are objects that contain all the data in SQL Server databases. 
+	Each table represents a type of object that is meaningful to its users.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+What is a View?
+	It can be thought of as either a virtual table or a stored query. Unless a view is indexed, its data is not stored in the database as a distinct objec.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Stored Procedure: Is a group of one or more transact sql statements. 
+	Are a collection of transact-sql statements stored within the db. 
+	They are used to encapsulate used queries, such as conditional statements, loops
+	and other powerfull programming features.
+	They are similar to functions in high level programming languages, they support 
+	both input and output parameters, as well as a return value. 
+	Sps can return rows of 	data or single values.
+
+Some benefits of Sps 
+	* Reduce server/client network traffic *strong security *Reuse of code *Easier Maintenance.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Functions: Are usefull objects in sql server, is a code snippet that can be executed on a sql server. 
+	Is considered an object. Only works with select statements. 
+	They compile every time. 
+	Must return a value or result. 
+	Only works with input parameters. 
+	Try and catch is not allowed in functions.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+What are indexes in sql server?
+	Are used in relational databases to reteieve data very fast.
+	thery are like indexes at the start of the books, wich purpose is to find a topic quickly.
+
+Clustered indexes:
+	Defines the order in wich data is physically stored in a table. They are similar to the Dictionary.
+	There is only one way to find a word so similarly there can be only one clustered index per table possible.
+	In sql server, if you set a primary key on a column then it will automatically create a clustered index on that column.
+
+	Sort and store the data rows in the table or view based on their key values
+
+Nonclustered indexes:
+	Have a structure separate from the data rows.
+	A nonclustered index contains the nonclustered index key values and each key value entry has a pointer to the data row that contains the key value.
+	A non-clustered index is stored at one place and table data is stored in another place. So, this index is not physically stored.
+	It is like the index of a Book.
+
+Differences between clustered and non-clustered ondex:
+
+Clustered						Non-Clustered
+A table can have only one table index		|	A table can have multiple non-clustered index.
+Is faster					|	Is slower.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Diferences between union and union all?
+	Union				Union All
+	Returns diferent values		Retuns all the values, even the repeted ones, includes the duplicated data.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Difference between Primary Key and Unique Key
+
+	Unique Key is used to ensure that 2 records can not contain the same value in a field.
+	It allows null values. And several contrains of this type can be appplied in the same table. 
+	It also can be applied to one or more fields which are not primary key.
+
+PK
+Can not accept null values.		|	Can accept only one null value.
+Creates clustered index.		|	Creates a Non-clustered index	
+Only one primary key in a table.	|	More than one unique key in a table.
+
+
+Como le harias para correjir o detectar si algun proceso esta lento. como lo sesuelves por ejemplo si el cargar clientes esta lento.
+
+
+first things first so i would start replicating the issue, once i have replicated the issue, then i would check in the developer tool what is the service endpoint that is slow or having some issue,
+after that i would look for the controller method and check what service is calling and will follow the chain of the layers involved in the project solution, untill i find the query that is being
+executed, with the query i would go to the database and do an execution plan to check if there is something wrong with the query, if that is the issue then will optimize the performance of the query, for example maybe adding some indexes, do the correct joins or left joins, maybe avoid using select all and use the field names required, if the query is not the issue then i would debug the code, and check if we need to execute whenAll to handle multiple process at the same time, if thats not the case then would go to the frontend and check if there are memory leaks and if that is the case then unsubscribe for the unnecesary services that are probably cousing the momory leaks.
+
+primero base de datos y hago un execution plann para revisar si hay mal performance, si ahi esta el problema ahi hay que mejorar el query, por ejemplo con indices, joins left joins
+si no entonces nos vamos a debuguear el codigo, quizas ejecutar un when.all para ejecutar varios procesos a la vez
+si no nos vamos al front end a ver si hay memory leaks.
+
+
+como le haces para ponerle un token a tus request de angular--- con interceptors
+
+
+interfaz vs clase normal
+
+para que se usa una clase abstracta
+
+
+

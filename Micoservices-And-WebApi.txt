@@ -1,0 +1,188 @@
+Microservices:
+	Basically the Microservices architecture decomposes an application into a collection of small, independent services, 
+	each one responsible for a specific piece of functionality.
+	Each microservice is self-contained and can be developed, deployed, and scaled independently.
+	Microservices communicate with each other via APIs or messaging protocols.
+	Typically, each microservice has its own database, making data management more decentralized.
+
+Traditional Web APIs:
+	In a traditional monolithic architecture, the entire application is contained within a single codebase or project.
+	The application is usually structured as a single unit with shared code and a centralized database.
+	Traditional web APIs expose endpoints to access different parts of the application, but they are part of the same monolithic system.
+	Changes or updates to the application often require modifying the entire codebase.
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+what is ConfigureAwait:
+	Is a method in .NET that is used in asynchronous programming to control the context in which the continuation (the code that runs after the awaited task is completed) 
+	of an asynchronous operation runs. 
+	It is primarily used to avoid deadlocks and improve the efficiency of the asynchronous code. 
+	ConfigureAwait i remember i used that in conjunction with the await keyword.
+
+	Tecchnically is a method on the Task class in .NET that allows you to control how await behaves in different contexts and scenarios.
+	By default, when an asynchronous method awaits a Task, the continuation occurs in the same thread that created the task. 
+	This can be problematic in some cases, such as when you are awaiting a task on the UI thread. 
+	If the task takes a long time to complete, the UI thread will be blocked and the UI will become unresponsive.
+	To avoid this problem, you can call ConfigureAwait(false) on the task before awaiting it. 
+	This will tell the runtime to run the continuation on a different thread, such as the thread pool. 
+	This will keep the UI thread responsive and allow the user to continue interacting with the application.
+
+	private async void ButtonClick(object sender, EventArgs e)
+	{
+	    // Start an asynchronous operation.
+	    var task = LongRunningOperationAsync();
+	
+	    // Wait for the operation to complete, but don't block the UI thread.
+	    await task.ConfigureAwait(false);
+	
+	    // Update the UI with the results of the operation.
+	    // ...
+	}
+
+	private async Task LongRunningOperationAsync()
+	{
+	    // Perform a long-running operation.
+	    // ...
+	}
+
+	In this example, the Button_Click method starts an asynchronous operation using the LongRunningOperationAsync method. 
+	The Button_Click method then awaits the LongRunningOperationAsync task, but it calls ConfigureAwait(false) first. 
+	This tells the runtime to run the continuation of the await operation on a different thread, such as the thread pool. 
+	This keeps the UI thread responsive and allows the user to continue interacting with the application.
+
+	It is important to note that ConfigureAwait(false) is not always necessary. 
+	It is only necessary if you are awaiting a task on a thread where you need to avoid blocking. 
+	For example, you should always call ConfigureAwait(false) when awaiting a task on the UI thread.
+
+	Here are some other scenarios where you may want to call ConfigureAwait(false):
+
+	When awaiting a task in a long-running loop.
+	When awaiting a task in a background worker thread.
+	When awaiting a task in a synchronous method.
+	If you are unsure whether or not you need to call ConfigureAwait(false), it is best to err on the side of caution and call it. 
+	This will help to ensure that your application is responsive and reliable.
+
+	In addition to ConfigureAwait(false), there is also a ConfigureAwait(true) method. 
+	However, this method is not recommended and should be avoided. 
+	Calling ConfigureAwait(true) will force the continuation of the await operation to run on the same thread that created the task, 
+	even if the task is awaited on a different thread. 
+	This can lead to performance problems and deadlocks.
+
+	Overall, ConfigureAwait(false) is a powerful tool that can be used to improve the performance and reliability of your asynchronous applications. 
+	However, it is important to understand how it works and when to use it.
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+microservices logging
+
+apigateway . we used to used them in cases where an there are external requests so the apigateway makes the validation and then calls to our internal web api.
+
+API gateway
+	All requests from client applications first reach the API gateway, which then forwards them to respective backend services. 
+	The API gateway acts as a facade to the backend services, allowing API providers to abstract API implementations and evolve backend architecture without impacting API consumers. 
+	The gateway enables consistent configuration of routing, security, throttling, caching, and observability.
+
+	The API Management gateway (also called data plane or runtime) is the service component that's responsible for proxying API requests, applying policies, 
+
+	Specifically, the gateway:
+	Acts as a facade to backend services by accepting API calls and routing them to appropriate backends.
+	Verifies API keys and other credentials such as JWT tokens and certificates presented with requests
+	Enforces usage quotas and rate limits
+	Optionally transforms requests and responses as specified in policy statements
+	If configured, caches responses to improve response latency and minimize the load on backend services
+	Emits logs, metrics, and traces for monitoring, reporting, and troubleshooting
+
+	In Azure API Management, API publishers can change API behavior through configuration using policies. 
+	Policies are a collection of statements that are run sequentially on the request or response of an API. 
+
+	Popular statements include: 
+	*Format conversion from XML to JSON 
+	*Call rate limiting to restrict the number of incoming calls from a developer.
+	*Filtering requests that come from certain IP addresses
+
+	API Management policy reference.
+
+	Policies are applied inside the gateway between the API consumer and the managed API. While the gateway receives requests and forwards them, 
+	unaltered, to the underlying API, a policy can apply changes to both the inbound request and outbound response.
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+What are filters in web api:
+	Filters are used to inject extra logic at the different levels of webapi framework request processing.
+	Filters provide a way for cross-cutting concerns(loggin, authorization, and caching)
+	Filters can be applied to an action or controller level.
+
+Authentication Filter: helps us to authenticate the user detail. In the authentication filter,
+	we write the logic for checking user authenticity.
+
+Authorization Filters: are responsible for checkng user access. They implement the iauthorization
+	Filter interface in the framework.
+
+Action Filter: Action filters are used to add extra logic before or after action method execution.
+	The OnActionExecuting and OnActionExecuted methods are used to add our logic before and after an action method is executed.
+
+Exception Filters: An exception filter is executed when a controller method throws any unhandled 
+	exception that is not an HttpResponseException. 
+	The HttpResponseException type is a special case, because it is designed specifically for returning an HTTP response.
+
+Using Exception Filters:
+	They can be used to handle unhandled exception wich are generated in Web API. Note that the exception filter 
+	does not catch HttpResponseException because HttpResponseException is specifically designed to return Http response. 
+	This is an attribute so we can decorate both action method controller with this. 
+	ExceptionFilter is very similar to HandleErrorAttribute in MVC.
+
+*Implement ExceptionFilterAttribute in your custom exception class
+*Override OnException() method.
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+What is basic authentication in web api?
+	Here the user passes their credentials (username and password) on a post request. Then at the web api end, credentials are verified.
+	If the credentials are validm then a session will initiate to accept the subsequent request wwithou validating the user again.
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+What is api key Authentication in web api?
+	in Api key authentication, the api owner will share an api key with the users and this key will authenticate the users of that api.
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+What is token based authentication?
+
+1. Client application first sends a request to authentication server with a valid credentials.
+2. The authentication server/ web api sends an access tolen to the client as a response. This token contains enough data to identify a particular user and it
+	has an expiry time.
+3. The client application then uses the token to access the restricted resources in the next request untill the token is valid.
+4. If the access token is expired, then the client application can request fot a new access token by using refresh token.
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+What is JWT Authentication?
+	JWT authentication is a token base authentication where JWT is a token format.
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+What are the parts of a JWT token?
+	1. Header. Algorithm used to generate the token.
+	2. Payload. It contains the claims.
+	3. Signature. It is used to verify that the issuer of the jwt is correct.
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+What are the main return types supported in web api?
+	A web api controller action method can return the following types:
+
+	Void 			=> It will return empty content.
+	HttpResponseMessage	=> It will convert the response to an HTTP message.
+	IHttpActionResult	=> Internally calls ExecuteAsync to create an HttpResponseMessage.
+	Other types		=> You can create ypur own custom return type.
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+What are the response codes in web api?
+	1xx: Informational => Communicates transfer protocol-level information.
+	2xx: Success	   => Indicate that the clients request was accepted successfully
+	3xx: Redirection   => This means request is not complete. The client must take some additional action in order to complete their request.
+	4xx: Client error  => This mens there is some error in api code.
+	5xx: Server error  => This means the error is not due to web api code but due to some environment settings.
+
+
+

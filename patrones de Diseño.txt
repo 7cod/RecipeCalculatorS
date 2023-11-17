@@ -1,0 +1,47 @@
+
+REPOSITORY
+Use a repository to separate the logic that retrieves the data and maps it to the entity model from the business logic that acts on the model.
+--Use un repositorio para separar la lógica que recupera los datos y lo asigna al modelo de entidad de la lógica de negocio que actúa sobre el modelo.
+
+Unit of Work
+is referred to as a single transaction that involves multiple operations of insert/update/delete and so on kinds
+que se conoce como una única transacción que involucra múltiples operaciones de insertar / actualizar / borrar y demás tipos
+
+VALUE OBJECT
+is a small object that represents a simple entity whose equality is not based on identity
+--es un pequeño objeto que representa una entidad sencilla cuya igualdad no se basa en la identidad
+
+DECORATOR
+is used to add new functionality to an existing object without changing its structure.
+---se utiliza para añadir nueva funcionalidad a un objeto existente sin cambiar su estructura.
+
+Dependency Injection (DI) is a technique whereby one object (or static method) supplies the dependencies of another object. 
+A dependency is an object that can be used (a service). An injection is the passing of a dependency to a dependent object (a client) that would use it.
+ The service is made part of the client's state.
+ Passing the service to the client, rather than allowing a client to build or find the service, is the fundamental requirement of the pattern.
+es una tecnica por la cual un objeto o metodo estatico suministra las dependencias de otro objeto.
+
+The single responsibility principle states that every module or class should have responsibility over a
+ single part of the functionality provided by the software, and that responsibility should be entirely encapsulated by the class.
+El principio de la responsabilidad individual se establece que todo módulo o clase debe tener la responsabilidad sobre una
+ sola parte de la funcionalidad proporcionada por el software, y que la responsabilidad debe ser completamente encapsulado por la clase.
+
+Open/closed
+software entities should be open for extension, but closed for modification.
+entidades de software deben estar abiertas para la extensión, pero cerrado para la modificación
+
+Liskov substitution principle
+if S is a subtype of T, then objects of type T may be replaced with objects of type S  without altering any of the desirable properties of that program
+si S es un subtipo de T, a continuación, los objetos de tipo T pueden ser sustituidos por los objetos de tipo S sin alterar ninguna de las propiedades 
+
+The interface-segregation principle states that no client should be forced to depend on methods it does not use.
+El principio interfaz de segregación establece que ningún cliente debe ser forzado a depender de métodos que no utiliza.
+
+Dependency inversion principle
+the dependency inversion principle refers to a specific form of decoupling software modules
+A. High-level modules should not depend on low-level modules. Both should depend on abstractions.
+B. Abstractions should not depend on details. Details should depend on abstractions.
+
+el principio de la dependencia de inversión se refiere a una forma específica de la disociación de los módulos de software
+A. Los módulos de alto nivel no deben depender de los módulos de bajo nivel. Ambos deben depender de abstracciones.
+B. Las abstracciones no debe depender de los detalles. Los detalles deben depender de abstracciones.

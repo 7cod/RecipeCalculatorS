@@ -1,0 +1,43 @@
+SQL Server is a relational database management system (RDBMS) from Microsoft that's designed for the enterprise environment.   
+
+Tables are objects that contain all the data in SQL Server databases. Each table represents a type of object that is meaningful to its users
+
+A view can be thought of as either a virtual table or a stored query. Unless a view is indexed, its data is not stored in the database as a distinct objec
+
+Databases
+Describes how databases are used to represent, manage, and access data. Includes designing, implementing, and maintaining databases.
+
+Federated Database Servers
+Describes design guidelines and considerations for implementing a federated database tier.
+
+Tables
+Describes how tables are used to store rows of data and define the relationships between multiple tables.
+
+Indexes allow the database application to find data fast; without reading the whole table.
+
+Indexes
+Describes how indexes are used to increase the speed of accessing data in the table.
+
+Partitioned Tables and Indexes
+Describes how partitioning can make large tables and indexes more manageable and scalable.
+
+Views
+Describes views and their usefulness in providing an alternative way of looking at data in one or more tables.
+
+Assemblies (Database Engine)
+Describes how assemblies are used in SQL Server to deploy functions, stored procedures, triggers, user-defined aggregates, 
+and user-defined types that are written in one of the managed 
+code languages hosted by the Microsoft .NET Framework common language runtime (CLR), and not written in Transact-SQL.
+
+Synonyms
+Describes how a synonym can be used to reference a base object. A synonym is another name for a schema-contained object.
+
+Designing and Implementing Structured Storage How-to Topics
+Contains procedure topics for various database tasks.
+
+Clustered indexes 
+Sort and store the data rows in the table or view based on their key values
+
+Nonclustered indexes 
+Have a structure separate from the data rows.
+A nonclustered index contains the nonclustered index key values and each key value entry has a pointer to the data row that contains the key value.

@@ -1,0 +1,106 @@
+dhttp://www.wcftutorial.net/EndPoint.aspx
+https://docs.angularjs.org/api/ng/directive/ngController
+ngIf directive removes or recreates a portion of the DOM tree based on an {expression}.
+
+The scope is the binding part between the HTML (view) and the JavaScript (controller).
+The scope is an object with the available properties and methods.
+The scope is available for both the view and the controller.
+
+In two-way databinding, automatic synchronization of data happens between the Model and the View.
+
+ngInit directive allows you to evaluate an expression in the current scope.
+
+ngApp directive designates the root element of the application and is typically placed near 
+the root element of the page.
+
+ngController directive attaches a controller class to the view
+
+The push() method adds new items to the end of an array, and returns the new length.
+
+JavaScript
+Scope in JavaScript refers to the current context of code, which determines the accessibility of variables to JavaScript.
+	 The two types of scope are local and global:
+			 Global variables are those declared outside of a block.
+			 Local variables are those declared inside of a block
+A memory leak is a type of resource leak that occurs when a computer program incorrectly manages memory allocations in such a way that memory which is no longer needed is not released
+promise represents the result of an asynchronous operation.
+Hoisting is a JavaScript mechanism where variables and function declarations are moved to the top of their scope before code execution.
+Hoisting is JavaScript's is moving all declarations to the top of the current scope
+In JavaScript, a closure is a function that references variables in the outer scope from its inner scope. The closure preserves the outer scope inside its inner scope.
+A nested function is a function that is defined inside or within another function.
+Funciones Declarativas:
+En las funciones declarativas, utilizamos la palabra reservada function al inicio para poder declarar la función,
+Expresión de función:
+En la expresión de función, la declaración se inicia con la palabra reservada var, donde se generará una variable que guardará una función anónima.
+La coerción es la conversión automática o implicita de valores de un tipo de dato a otro
+coercion is the process of converting value from one type to another
+Coercion refers to the process of automatic or implicit conversion of values from one data type to another.
+
+== only compares values
+=== compares values and type
+
+The Angular ahead-of-time (AOT) compiler converts your Angular HTML and TypeScript code into efficient
+ JavaScript code during the build phase before the browser downloads and runs that code.
+
+ Compiling your application during the build process provides a faster rendering in the browser.
+
+Just in time compiler provides compilation during the execution of the program at a run time before execution. 
+In simple words, code get compiles when it’s needed, not at the build time.
+
+Angular services are objects that get instantiated just once during the lifetime of an application.
+The main objective of a service is to organize and share business logic, models, or data and functions with different components of an Angular application. 
+
+An Angular module is a deployment sub-set of your whole Angular application.
+
+Dependency Injection, or DI, is a design pattern and mechanism for creating and delivering some parts of an application to other parts of an application
+
+The forRoot() method creates an NgModule that contains all the directives, the given routes, and the Router service itself
+
+Observables are lazy Push collections of multiple values.
+
+pipe() can be called on one or more functions, each of which can take one argument ("UnaryFunction") and uses it to return a value.
+ It returns a function that takes one argument, passes it to the first UnaryFunction, and then passes the result to the next one, passes that result to the next one, and so on.
+
+forkJoin is an operator that takes any number of input observables which can be passed either as an array or a dictionary of input observables. 
+A Subject is like an Observable, but can multicast to many Observers. Subjects are like EventEmitters: they maintain a registry of many listeners.
+
+An Observable is cold when data is produced inside the Observable and 
+A cold Observable waits until an observer subscribes to it to start emitting.
+
+the Observable is hot when the data is produced outside the Observable
+A hot Observable will start emitting as soon as it's created, and as such the values it emits are produced outside of it.
+
+Lazy loading is a concept where we delay the loading of the object until the point where we need it. 
+Putting in simple words, on demand object loading rather than loading objects unnecessarily.
+
+Lazy loading is a technology of angular that allows you to load JavaScript components when a specific route is activated.
+
+The Angular router allows developers to build Single Page Applications 
+with multiple states and views using routes and components and allows client side navigation and routing between the various components.
+
+Code-First is mainly useful in Domain Driven Design.
+With the Code-First, you can focus on the domain design and start creating classes as per your domain requirement
+
+Entity Framework provides an easy way to use code-first approach for an existing database. 
+It will create entity classes for all the tables & views in your 
+existing database and configure it with DataAnnotations attributes and Fluent API.
+
+Domain-Driven Design(DDD) is a collection of principles and patterns that help developers craft elegant object systems. 
+Properly applied it can lead to software abstractions called domain models. These models encapsulate complex business logic,
+ closing the gap between business reality and code.
+
+Diseño de dominio-Driven (DDD) es un conjunto de principios y pautas que ayudan a los sistemas elegantes de 
+objetos de artesanía desarrolladores. Debidamente aplicado puede llevar a abstracciones de software llamados modelos de dominio.
+Estos modelos encapsulan la lógica de negocio compleja, cerrar la brecha entre la realidad y el código de negocio.
+
+MVC
+Model is responsible for actual data processing, like database connection, querying database, implementing business rules.
+View is the graphical data presentation (outputting) irrespective of the real data processing.
+Controller is responsible for Notice of action,  Controllers are associated with views
+
+ box model is essentially a box that wraps around every HTML element. It consists of: margins, borders, padding, and the actual content.
+
+media query  -->  all   print    screen
+@media screen and (width: 600px)
+@media screen and (min-width: 600px) and (orientation: landscape)
+@media (hover: hover)

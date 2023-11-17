@@ -1,0 +1,82 @@
+Hi im Luis, i am a software developer and i have worked on several and diferent kinds of projects throughout my professional carear, 
+started working and collaborating in the development of a system for a medical lab,
+on that time we were using .net framework and windows forms and ADO.Net to handle transactions and 
+communications with the database which was in sql server, also old crystal reports.
+
+For that company i also developed a mobile application for an hemodialisis lab to handle and track
+the process and whats going on with a unit of blood (blood bag) in the hospital. 
+this application i was using objective c, xcode, also visual studio and c# for
+a small monitoring system in the lab.
+
+For another company (ventus technology) i was giving support to wcf web services and developing new restfull web apis with .net and 
+linq to sql, that was for the client chubb wich is all about car insurances.
+
+A little more recent i was in a project for an Energy company(NextEra the company) where i was developing
+other web apis, i was also consuming an external web api to get some weather forecast data wich was returned in a csv file so i implemented
+the way to read this csv file, i remember i used a library for that, i think is lumen to deserialize and serialize this data, 
+after that i save the information into the corresponding data table in sql server,
+, for that project we were using .net core 3.1 with code first approach for sql and postgress databases,
+in that project i was also using Angular 8 for the ui and angular material, we wre using the 
+scrum methodology. 
+For the ui also was building some kind of reports (tables with statistical data), pie charts, sliders that makes the table data change dependiong on the slide.
+
+In Agile i was also working with microservices in .net core 5 and .net 6, for the ui we were using
+Aurelia, and was fixing bugs for the medical system, there we were using sql server and postgress and also developed
+some stored procedures, i worked with unit testing and code coverage, continous integration with azure dev ops and
+scrum methodology as well.
+
+Then for other client ..for Epic i was using .net framework, web forms, sql server, and scrum methodology,
+i was collaborating in the implementation of new requirements for LMS(loan management System), developing new endpoints and giving support to existing web APIs. 
+
+And now i am currently working on a history to copy notes from one project to another,
+In the application we have many project names and every project has hundreds or thousands of employees associated to the project.
+And the employees can have a note " a simple text note", so in the process of creating a new project in the system, we will display a new screen with a dropddown wich is
+filled only with the project names that contains notes, so that the user decides wether to import or not the existing notes.
+If the user selects the project to import the notes, then we call that specific endpoint. 
+
+I implemented the FlagsNotesController wich is the specific endpoint for the process. in that controller i have the httppost method to import the notes, 
+that controller calls to our service and the service contains the call to our repository wich handles the
+operations to the database, in this project we are using ADO.NET's Dapper library, in this case we handle it calling a stored procedure to do the import of the notes.
+
+
+In this controller i have several methods for the different actions on the notes, for example one method to retrieve all the notes of a particular project wich is a get,
+i have other method to import the notes wich is a post and for other actions like removing the notes from a particular project which is a delete.
+In this controller im also using Action Filters to add extra logic before or after the execution of the method. 
+OnActionExecuted
+OnActionExecutedAsync
+OnActionExecuting => will be executed before each action method in the controller.
+
+For this i created the NotesActivityLog class that inherits from actionfilterAttribute and use this as a decorator in my importnotes method controller, 
+so that every time an operation is going to happend for the notes i log this in the database.
+
+
+Here are some common uses for the OnActionExecuted method:
+
+Logging: You can use the OnActionExecuted method to log information about the executed action, such as the action name, the input parameters, and the output data.
+Exception handling: You can use the OnActionExecuted method to catch and handle exceptions that occur during the execution of the action.
+Performance monitoring: You can use the OnActionExecuted method to measure the performance of the action and log the elapsed time.
+Modifying the response: You can use the OnActionExecuted method to modify the response before it is sent to the client.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+First things first so i would start replicating the issue, once i have replicated the issue, then i would check in the developer tool what is the service endpoint
+that is slow or having some issue, after that i would look for the controller method and check what service is called, i mean i would follow the chain of the layers 
+involved in the project solution untill i find the query that is being executed, with the query i would go to the database and do an execution plan to check if there 
+is something wrong with the query, if that is the issue then will optimize the performance of the query, for example maybe adding some indexes, do the correct joins 
+or left joins, maybe avoid using select all(star) and use the field names required, if the query is not the issue then i would debug the code, and check if we need 
+to execute whenAll to handle multiple process at the same time, if thats not the case then would go to the frontend and check if there are memory leaks and if that 
+is the case then unsubscribe for the unnecesary services that are probably cousing the momory leaks.
+ohhh also something else we could check is if we are using ConfigureAwait, this is primarily used to avoid deadlocks and improve the efficiency of the asynchronous code. 
+If the task takes a long time to complete, the UI thread will be blocked and the UI will become unresponsive.
+To avoid this problem, you can call ConfigureAwait(false) on the task before awaiting it. 
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Systems soft Technology en tampa florida.
+
+
+tek zenit oficinas en la india y en gdl ede en dallas. Ejercicio de teams en vivo pa ejercicio de logico media hora
+otra entreviste de 1 hora con el equipo
+
+como te mantienes actualizado.
+
+

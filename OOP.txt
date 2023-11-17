@@ -1,0 +1,89 @@
+http://www.c-sharpcorner.com/UploadFile/84c85b/object-oriented-programming-using-C-Sharp-net/
+
+Object Oriented Programming (OOP) is a programming model where programs are organized around objects and data rather than action and logic. 
+
+Inheritance
+When a class includes a property of another class
+Inheritance is the process by which one object acquires the properties of another object.
+La herencia es el proceso por el cual un objeto adquiere las propiedades de otro objeto.
+
+Polymorphism
+
+Polymorphism is a feature that allows one interface to be used for a general class of action. 
+This concept is often expressed as "one interface, multiple actions"
+El polimorfismo es una característica que permite una interfaz a utilizar para una clase general de acción.
+
+Constructor 
+is a specialized function that is used to initialize fields. 
+A constructor has the same name as the class
+es una función especializada que se utiliza para inicializar campos.
+Un constructor tiene el mismo nombre que la clase
+
+Encapsulation 
+Is the mechanism that binds together the code and the data it manipulates, and keeps both safe from outside interference and misuse
+Es el mecanismo que une el código y los datos que manipula y mantiene a la vez seguro de la interferencia externa y el uso indebido
+
+Abstraction 
+is a process of hiding the implementation details and showing only functionality to the user.
+es un proceso de ocultar los detalles de implementación y mostrar solo la funcionalidad para el usuario.
+
+Abstract Class
+You can't create an instance of an abstract class
+No se puede crear una instancia de una clase abstracta
+
+Sealed classes 
+are the reverse of abstract classes. While abstract classes are inherited and are refined in the derived class, 
+sealed classes cannot be inherited. 
+You can create an instance of a sealed class. 
+A sealed class is used to prevent further refinement through inheritance. 
+
+son el reverso de las clases abstractas. Mientras que las clases abstractas se heredan y se refinan en la clase derivada,
+clases cerradas no pueden ser heredados.
+Se puede crear una instancia de una clase cerrada.
+Una Sealed class se utiliza para prevenir un mayor refinamiento través de la herencia.
+
+
+Interface 
+is a set of related functions that must be implemented in a derived class.
+ Members of an interface are implicitly public and abstract. Interfaces are similar to abstract classes.
+ First, both types must be inherited; second, you cannot create an instance of either.
+Although there are several differences as in the following;
+
+es un conjunto de funciones relacionadas que se deben implementar en una clase derivada.
+  Los miembros de una interfaz son implícitamente públicos y abstracto. Las interfaces son similares a las clases abstractas.
+  En primer lugar, ambos tipos deben ser heredados; En segundo lugar, no se puede crear una instancia de cualquiera.
+Aunque hay varias diferencias como en el siguiente;
+
+
+StringBuilder is a mutable type, that means we are using the same memory location and keep on appending/modifying the stuff to one instance. 
+It will not create any further instances hence it will not decrease the performance of the application.
+
+Strings are immutable, which means we are creating new memory everytime instead of working on existing memory.
+
+String is a reference type,
+
+An Abstract class can contain some implementations but an interface can not.
+An Interface can only inherit other interfaces but abstract classes can inherit from other classes and interfaces.
+An Abstract class can contain constructors and destructors but an interface can't.
+An Abstract class contains fields but interfaces don't.
+
+Generic Class
+Use generic types to maximize code reuse, type safety, and performance.
+The most common use of generics is to create collection classes.
+You can create your own generic interfaces, classes, methods, events and delegates.
+Generic classes may be constrained to enable access to methods on particular data types. 
+
+
+Keyword		    Description
+public			Public class is visible in the current and referencing assembly.
+private			Visible inside current class.
+protected		Visible inside current and derived class.
+Internal		Visible inside containing assembly.
+Internal protected	Visible inside containing assembly and descendent of thecurrent class.
+ 
+
+Modifier	    Description
+sealed			Class can't be inherited by a derived class.
+static			Class contains only static members.  (the compiler never creates an instance of the class)
+unsafe			The class that has some unsafe construct likes pointers.
+Abstract		The instance of the class is not created if the Class is abstract.
